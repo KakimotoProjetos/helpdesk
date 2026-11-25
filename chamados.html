@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpDesk Escolar - Chamados</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .contadores-chamados {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .contador-card {
+            background: #fff;
+            border: 1px solid var(--linha);
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .contador-card strong {
+            display: block;
+            font-size: 25px;
+            margin-bottom: 4px;
+        }
+
+        .contador-card span {
+            color: var(--tinta-sauve);
+            font-size: 13px;
+        }
+
+        .contador-aberto strong {
+            color: #315f91;
+        }
+
+        .contador-andamento strong {
+            color: #a66a13;
+        }
+
+        .contador-resolvido strong {
+            color: #2f6f5e;
+        }
+
+        .controles-lista {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .campo-filtro {
+            margin-bottom: 0;
+        }
+
+        .cartao-chamado {
+            background: var(--superficie);
+            border: 1px solid var(--linha);
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .cartao-chamado-topo,
+        .rodape-chamado {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .numero-chamado {
+            font-weight: 700;
+        }
+
+        .badge-prioridade,
+        .badge-status {
+            display: inline-block;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .prioridadealta {
+            background: #fbe5e2;
+            color: #a12f24;
+        }
+
+        .prioridademedia {
+            background: #fff1d6;
+            color: #875b14;
+        }
+
+        .prioridadebaixa {
+            background: #e7f1ee;
+            color: #2f6f5e;
+        }
+
+        .select-status {
+            max-width: 190px;
+        }
+
+        .botao-excluir {
+            border: 1px solid #b5502f;
+            background: #fff;
+            color: #b5502f;
+            border-radius: 7px;
+            padding: 10px 14px;
+            cursor: pointer;
+            font: inherit;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .botao-excluir:hover {
+            background: #b5502f;
+            color: #fff;
+        }
+
+        .mensagem-vazia {
+            color: var(--tinta-sauve);
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        @media (max-width: 560px) {
+
+            .contadores-chamados,
+            .controles-lista {
+                grid-template-columns: 1fr;
+            }
+
+            .cartao-chamado {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topo">
+        <div class="topo-conteudo">
+            <span class="topo-marca">HelpDesk Escolar</span>
+            <nav class="topo-nav">
+                <a href="index.html">Abrir chamado</a>
+                <a href="chamados.html" class="ativo">Ver chamados</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="conteudo conteudo-larga">
+        <div class="cabecalho-lista">
+            <div>
+                <h1>Chamados registrados</h1>
+                <p class="subtitulo">
+                    Acompanhe, filtre e atualize o status dos chamados abertos pela escola.
+                </p>
+            </div>
+
+            <section class="contadores-chamados" aria-label="Quantidade de chamados por status">
+                <div class="contador-card contador-aberto">
+                    <strong id="contador-abertos">0</strong>
+                    <span>Abertos</span>
+                </div>
+                <div class="contador-card contador-andamento">
+                    <strong id="contador-andamento">0</strong>
+                    <span>Em andamento</span>
+                </div>
+                <div class="contador-card contador-resolvido">
+                    <strong id="contador-resolvidos">0</strong>
+                    <span>Resolvidos</span>
+                </div>
+            </section>
+
+            <div class="campo campo-filtro">
+                <label for="pesquisa-chamado">Pesquisar chamados</label>
+
+                <input type="text" id="pesquisa-chamado" placeholder="Digite o nome ou a descrição do chamado...">
+            </div>
+
+            <div class="controles-lista">
+                <div class="campo campo-filtro">
+                    <label for="filtro-status">Filtrar por status</label>
+                    <select id="filtro-status">
+                        <option value="Todos">Todos</option>
+                        <option value="Aberto">Aberto</option>
+                        <option value="Em andamento">Em andamento</option>
+                        <option value="Resolvido">Resolvido</option>
+                    </select>
+                </div>
+
+                <div class="campo campo-filtro">
+                    <label for="ordenar-chamados">Ordenar chamados</label>
+                    <select id="ordenar-chamados">
+                        <option value="recentes">Mais recentes primeiro</option>
+                        <option value="antigos">Mais antigos primeiro</option>
+                        <option value="prioridade">Maior prioridade primeiro</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="lista-chamados" class="lista-chamados">
+                <!-- Os cartões de chamado são inseridos aqui via JavaScript. -->
+            </div>
+        </div>
+
+        <p id="mensagem-vazia" class="mensagem-vazia" hidden>
+            Nenhum chamado encontrado para esse filtro.
+        </p>
+    </main>
+
+    <script src="Storage.js"></script>
+    <script src="chamados.js"></script>
+</body>
+
+</html>

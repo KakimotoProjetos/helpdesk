@@ -1,0 +1,229 @@
+:root {
+    --tinta: #ffffff;
+    --tinta-sauve: #d2c8dc;
+    --linha: #51465a;
+    --fundo: #17131c;
+    --superficie: #241d2b;
+    --sinal: #7651a6;
+    --sinal-fundo: #f0e8f8;
+    --alerta: #b54747;
+    --foco: #7651a6;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Liberation Serif', Georgia, serif;
+    background-color: var(--fundo);
+    color: var(--tinta);
+}
+
+h1, .topo-marca {
+    font-family: 'Liberation Serif', Georgia, serif;
+}
+
+.topo {
+    background: var(--superficie);
+    border-bottom: 1px solid var(--linha);
+}
+
+.topo-conteudo {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topo-marca {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.topo-nav {
+    display: flex;
+    gap: 24px;
+}
+
+.topo-nav a {
+    color: var(--tinta-sauve);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+}
+
+.topo-nav a:hover {
+    color: var(--tinta);
+    border-bottom-color: var(--sinal);
+}
+
+.conteudo {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+
+.cartao {
+    background: var(--superficie);
+    border: 1px solid var(--linha);
+    border-radius: 10px;
+    padding: 40px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+}
+
+.subtitulo {
+    margin: 0 0 32px;
+    color: var(--tinta-sauve);
+    font-size: 15px;
+    line-height: 1.5;
+    max-width: 50ch;
+}
+
+.campo {
+    margin-bottom: 20px;
+}
+
+.campo-duplo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--tinta);
+    margin-bottom: 6px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid var(--linha);
+    border-radius: 7px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--tinta);
+    background: var(--superficie);
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--foco);
+    box-shadow: 0 0 0 3px rgba(118, 81, 166, 0.15);
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Botão */
+
+.botao-principal {
+    width: 100%;
+    padding: 13px;
+    background: var(--sinal);
+    color: var(--superficie);
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.botao-principal:hover {
+    background: #604087;
+}
+
+.mensagem-status {
+    min-height: 20px;
+    margin: 16px 0 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.mensagem-status-sucesso {
+    color: var(--sinal);
+}
+
+.mensagem-status-erro {
+    color: var(--alerta);
+}
+
+@media (max-width: 560px) {
+    .cartao {
+        padding: 24px;
+    }
+    .campo-duplo {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+/* Estilo para os cards dos chamados dentro da lista */
+#lista-chamados > div,
+.chamado-card {
+    background: var(--superficie);
+    border: 1px solid var(--linha);
+    border-radius: 10px;
+    padding: 24px 32px;
+}
+
+/* Ajustes de tipografia e layout dentro do chamado */
+#lista-chamados h2, 
+#lista-chamados h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#lista-chamados p {
+    margin: 0 0 12px 0;
+    color: var(--tinta-sauve);
+    line-height: 1.5;
+}
+
+.chamado-info {
+    display: flex;
+    gap: 16px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.botao-editar {
+    border: 1px solid var(--sinal);
+    background: var(--superficie);
+    color: var(--sinal);
+    border-radius: 7px;
+    padding: 10px 14px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.botao-editar:hover {
+    background: var(--sinal);
+    color: #fff;
+}
+
+.botao-excluir,
+.botao-editar {
+    margin-top: 8px;
+}
