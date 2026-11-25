@@ -1,13 +1,13 @@
 :root {
-    --tinta: #ffffff;
-    --tinta-sauve: #d2c8dc;
-    --linha: #5a4647;
-    --fundo: #17131c;
-    --superficie: #2b1d1d;
-    --sinal: #a65151;
-    --sinal-fundo: #f0e8f8;
-    --alerta: #ca0d0d;
-    --foco: #a65154;
+    --tinta: #fffafc;
+    --tinta-sauve: #ead8df;
+    --linha: #69545f;
+    --fundo: #211820;
+    --superficie: #30232d;
+    --sinal: #f3b8cc;
+    --sinal-fundo: #fff0b8;
+    --alerta: #ff9b9b;
+    --foco: #f6df8b;
 }
 
 * {
@@ -125,7 +125,7 @@ input, select, textarea {
 input:focus, select:focus, textarea:focus {
     outline: none;
     border-color: var(--foco);
-    box-shadow: 0 0 0 3px rgba(118, 81, 166, 0.15);
+    box-shadow: 0 0 0 3px rgba(246, 223, 139, 0.22);
 }
 
 textarea {
@@ -138,7 +138,7 @@ textarea {
     width: 100%;
     padding: 13px;
     background: var(--sinal);
-    color: var(--superficie);
+    color: #39232d;
     border: none;
     border-radius: 7px;
     font-size: 15px;
@@ -149,7 +149,7 @@ textarea {
 }
 
 .botao-principal:hover {
-    background: #874040;
+    background: #f8cadd;
 }
 
 .mensagem-status {
@@ -160,7 +160,7 @@ textarea {
 }
 
 .mensagem-status-sucesso {
-    color: var(--sinal);
+    color: var(--foco);
 }
 
 .mensagem-status-erro {
@@ -220,7 +220,7 @@ textarea {
 
 .botao-editar:hover {
     background: var(--sinal);
-    color: #fff;
+    color: #39232d;
 }
 
 .botao-excluir,
