@@ -1,13 +1,13 @@
 :root {
     --tinta: #ffffff;
     --tinta-sauve: #d2c8dc;
-    --linha: #51465a;
+    --linha: #5a4647;
     --fundo: #17131c;
-    --superficie: #241d2b;
-    --sinal: #7651a6;
+    --superficie: #2b1d1d;
+    --sinal: #a65151;
     --sinal-fundo: #f0e8f8;
-    --alerta: #b54747;
-    --foco: #7651a6;
+    --alerta: #ca0d0d;
+    --foco: #a65154;
 }
 
 * {
